@@ -1,5 +1,5 @@
-FOR = lf95
-FFLAGS = -O --dbl --quiet --staticlink
+FOR = gfortran
+FFLAGS = -static -O2 -freal-4-real-8 
 .f.o:
 	$(FOR) $(FFLAGS) -c $<
 
@@ -63,7 +63,7 @@ OBJ = 	mf2k.o \
 	ctime.o
 
 mf2k: $(OBJ)
-	$(FOR) $(FFLAGS) -o mf2k $(OBJ)
+	$(FOR) $(FFLAGS) -o rrca-mf2k $(OBJ)
 
 clean:
 	rm -f mf2k *.o

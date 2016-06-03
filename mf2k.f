@@ -57,7 +57,7 @@ C *** STATEMENT MUST BE COMMENTED OUT
      &            XHS(:), NIPRNAM(:), EQNAM(:), NAMES(:), OBSNAM(:)
 C
       PARAMETER (NIUNIT=100)
-      PARAMETER (MXPER=1000)
+      PARAMETER (MXPER=9999)
 C
       DIMENSION PERLEN(MXPER),NSTP(MXPER),TSMULT(MXPER),ISSFLG(MXPER)
       CHARACTER*16 VBNM(NIUNIT)
@@ -1900,7 +1900,7 @@ C
           IF (IFO.NE.1 .OR. LASTX.GT.0)
      &        CALL SEN1BAS6PD(IOUT,NPE,NPER,NSTP,NTIMES,X(LCSEND),
      &                        X(LCSNDT))
-        ENDIF
+      ENDIF
 C
 C       PRINT DATA FOR OBSERVED HEADS AND FLOWS.
         IF (ND.GT.0 .AND. (IFO.NE.1 .OR. LASTX.NE.0))
@@ -2106,6 +2106,11 @@ C
 C
       CALL PLL1CL()
       WRITE(*,121)
+      
+      !added by michael
+      
+      open(file = "cum.dat",newunit=IOUT)
+      CALL SGWF1BAS6V(MSUM,VBNM,VBVL,KSTP-1,KPER-1,IOUT,ICNVG)
 121   FORMAT(1X,'Normal termination of MODFLOW-2000')
       STOP
 C
