@@ -66,4 +66,4 @@ mf2k: $(OBJ)
 	$(FOR) $(FFLAGS) -o rrca-mf2k $(OBJ)
 
 clean:
-	rm -f mf2k *.o
+	rm -f *.o
